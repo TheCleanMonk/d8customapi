@@ -1,0 +1,55 @@
+red_hat_comments.urihashinfo:
+  path: "/api/comments/{source_id}"
+  defaults:
+    _controller: '\Drupal\comment_api\Controller\RedhatComments::getUriHashData'
+  methods: [GET]
+  requirements:
+    _permission: "edit-permissions-access-comments"
+
+red_hat_comments.getcommentinfo:
+  path: "/api/comment/{id}"
+  defaults:
+    _controller: '\Drupal\comment_api\Controller\RedhatComments::getCommentsData'
+  methods: [GET]
+  requirements:
+    _permission: "edit-permissions-access-comments"
+
+red_hat_comments.insertcomment:
+  path: "/api/comment/insert/{source_id}"
+  defaults:
+    _controller: '\Drupal\comment_api\Controller\RedhatComments::insertComment'
+  methods: [POST]
+  requirements:
+    _permission: "edit-permissions-post-comments"
+
+red_hat_comments.deletecomment:
+  path: "/api/comment/delete/{id}"
+  defaults:
+    _controller: '\Drupal\comment_api\Controller\RedhatComments::deleteComment'
+  methods: [PUT]
+  requirements:
+    _permission: "edit-permissions-administer-comments"
+
+red_hat_comments.updatecomment:
+  path: "/api/comment/update/{id}"
+  defaults:
+    _controller: '\Drupal\comment_api\Controller\RedhatComments::updateComment'
+  methods: [PUT]
+  requirements:
+    _permission: "edit-permissions-edit-own-comments"
+
+red_hat_comments.publishcomment:
+  path: "/api/comment/published/{id}"
+  defaults:
+    _controller: '\Drupal\comment_api\Controller\RedhatComments::publishComment'
+  methods: [PUT]
+  requirements:
+    _permission: "edit-permissions-administer-comments"
+
+red_hat_comments.commenttracker:
+  path: "/api/commenttracker/create/{source_id}"
+  defaults:
+    _controller: '\Drupal\comment_api\Controller\RedhatComments::createCommentTracker'
+  methods: [POST]
+  requirements:
+    _permission: "edit-permissions-create-commenttracker-content"

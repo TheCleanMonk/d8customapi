@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Handles customizations to pages and comments.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function comment_api_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle) {
+  if ($entity_type->id() === 'node' && $bundle === 'commenttracker') {
+    if (isset($fields['field_source_id'])) {
+      /** @var \Drupal\Core\Field\FieldDefinitionInterface $field */
+      $field = $fields['field_source_id'];
+      $field->addConstraint('UniqueField', []);
+    }
+  }
+}
